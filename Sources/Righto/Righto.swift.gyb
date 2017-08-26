@@ -1,0 +1,54 @@
+% toAndFrom = [
+%   ("Int", [
+%       "BinaryInteger", "BinaryFloatingPoint", "Double", "Float", "Float80", "StringProtocol?"
+%   ]),
+%   ("Int8", [
+%       "BinaryInteger", "BinaryFloatingPoint", "Double", "Float", "Float80", "StringProtocol?"
+%   ]),
+%   ("Int16", [
+%       "BinaryInteger", "BinaryFloatingPoint", "Double", "Float", "Float80", "StringProtocol?"
+%   ]),
+%   ("Int32", [
+%       "BinaryInteger", "BinaryFloatingPoint", "Double", "Float", "Float80", "StringProtocol?"
+%   ]),
+%   ("Int64", [
+%       "BinaryInteger", "BinaryFloatingPoint", "Double", "Float", "Float80", "StringProtocol?"
+%   ]),
+%   ("UInt", [
+%       "BinaryInteger", "BinaryFloatingPoint", "Double", "Float", "Float80", "StringProtocol?"
+%   ]),
+%   ("UInt8", [
+%       "BinaryInteger", "BinaryFloatingPoint", "Double", "Float", "Float80", "StringProtocol?"
+%   ]),
+%   ("UInt16", [
+%       "BinaryInteger", "BinaryFloatingPoint", "Double", "Float", "Float80", "StringProtocol?"
+%   ]),
+%   ("UInt32", [
+%       "BinaryInteger", "BinaryFloatingPoint", "Double", "Float", "Float80", "StringProtocol?"
+%   ]),
+%   ("UInt64", [
+%       "BinaryInteger", "BinaryFloatingPoint", "Double", "Float", "Float80", "StringProtocol?"
+%   ]),
+%   ("Double", [
+%       "Int", "Int8", "Int16", "Int32", "Int64", "UInt", "UInt8", "UInt16", "UInt32", "UInt64", "Double", "Float", "Float80", "StringProtocol?"
+%   ]),
+%   ("Float", [
+%       "Int", "Int8", "Int16", "Int32", "Int64", "UInt", "UInt8", "UInt16", "UInt32", "UInt64", "Double", "Float", "Float80", "StringProtocol?"
+%   ]),
+% ]
+% for t, fs in toAndFrom:
+%   for f in fs:
+%     if f[-1] == '?':
+%       f = f[:-1]
+%       failable = True
+%     else:
+%       failable = False
+%     end
+extension ${f} {
+    public func to(_ type: ${t}.Type) -> ${t}${'?' if failable else ''} {
+        return ${t}(self)
+    }
+}
+
+%   end
+% end

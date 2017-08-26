@@ -1,12 +1,13 @@
 import XCTest
-@testable import Righto
+import Righto
 
 class RightoTests: XCTestCase {
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(Righto().text, "Hello, World!")
+        let s = "42"
+        // instead of `Int(s)`
+        let a: Int? = s.to(Int.self)
+        
+        XCTAssertEqual(a, 42)
     }
 
 
